@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Semillas SEK - AR con Marcadores</title>
+
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.7/aframe/build/aframe-ar.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .info-overlay {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="info-overlay">
+    <p>Escanea uno de los tres marcadores:</p>
+    <strong>Hiro (Girasol), Kanji (Palmera), Personalizado (Pasto)</strong>
+  </div>
+
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+    <!-- GIRASOL -->
+    <a-marker preset="hiro">
+      <a-gltf-model src="models/sunflower_seed.glb" scale="0.5 0.5 0.5" rotation="90 0 0"
+        position="0 1 0"></a-gltf-model>
+      <a-text value="Girasol 🌻" color="#FFDD00" align="center" width="2.5" position="0 2.5 0"></a-text>
+    </a-marker>
+
+    <!-- PALMERA -->
+    <a-marker preset="kanji">
+      <a-gltf-model src="models/palm_seed.glb" scale="1.2 1.2 1.2" rotation="90 0 0" position="0 0.6 0"></a-gltf-model>
+      <a-text value="Palmera 🌴" color="#77B547" align="center" width="2.5" position="0 2.0 0"></a-text>
+    </a-marker>
+
+    <!-- PASTO -->
+    <a-marker type="pattern" url="markers/pattern-persona.patt">
+      <a-gltf-model src="models/grass_seed.glb" scale="0.1 0.1 0.1" position="0 0 0"></a-gltf-model>
+      <a-text value="Pasto 🌱" color="#FFFFFF" align="center" width="2.5" position="0 2.3 0"></a-text>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
